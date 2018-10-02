@@ -38,11 +38,7 @@ def is_password(clipped):
       elif char in string.digits:
         password['has_number'] = 1
       
-      sum = 0
-      for key in password:
-        sum += password[key]
-      
-      if sum >= THRESHOLD:
+      if sum(password.values()) >= THRESHOLD:
         return 1
   return 0
   
@@ -90,9 +86,8 @@ def email_suffix(suffix):
     '.gov',
     '.me'
   ]
-  for item in suffix_list:
-    if item in suffix:
-      return 1
+  if item in suffix_list:
+    return 1
   return 0
   
 def is_email(email):
